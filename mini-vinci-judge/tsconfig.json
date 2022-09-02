@@ -1,0 +1,10 @@
+{
+    "compilerOptions": {
+        "moduleResolution": "node",
+        "target": "ES5",
+        "module": "commonjs",
+        "outDir": "dist",
+        "baseUrl": "src"
+    },
+    "include": ["src"]
+}
