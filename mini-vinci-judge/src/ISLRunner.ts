@@ -12,11 +12,21 @@ const islRunner = async () => {
     try {
         const problemIdNumber = Number(problemId);
         const targetPaintingDataResponse = await axios.get(`https://cdn.robovinci.xyz/imageframes/${problemIdNumber}.json`);
+        let targetPaintingInitialCanvasResponse;
+        if (problemIdNumber > 25) {
+            targetPaintingInitialCanvasResponse =  await axios.get(`https://cdn.robovinci.xyz/imageframes/${problemIdNumber}.initial.json`);
+        }
 
         const fileContent = await fs.readFile(filename, 'utf8');
 
         const interpreter = new Interpreter();
-        const interpretedStructure = interpreter.run(fileContent);
+
+        let interpretedStructure;
+        if (problemIdNumber > 25) {
+            interpretedStructure = interpreter.run_with_config(fileContent, targetPaintingInitialCanvasResponse.data);
+        } else {
+            interpretedStructure = interpreter.run(fileContent);
+        }
 
         const interpretedCanvas = interpretedStructure.canvas;
         const instructionCost = interpretedStructure.cost;
