@@ -2,6 +2,7 @@
 
 import { Point } from './Point';
 import { RGBA } from './Color';
+import { StringMappingType } from 'typescript';
 
 
 export type Size = Point;
@@ -35,6 +36,7 @@ export class SimpleBlock {
         }
 
         if (this.size.getScalarSize() == 0) {
+            console.log(this.id, this.bottomLeft, this.topRight);
             throw new Error('Block size cannot be 0!');
         }
     }
@@ -73,6 +75,7 @@ export class ComplexBlock {
     getChildren() {
         return this.subBlocks;
     }
+
 
     offsetChildren(newBottomLeft: Point) {
         let newChildren: SimpleBlock[] = [];
