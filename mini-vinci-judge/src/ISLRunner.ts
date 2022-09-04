@@ -23,7 +23,7 @@ const islRunner = async () => {
 
         let interpretedStructure;
         if (problemIdNumber > 25) {
-            interpretedStructure = interpreter.run_with_config(fileContent, targetPaintingInitialCanvasResponse.data);
+            interpretedStructure = interpreter.run_with_config(fileContent, targetPaintingInitialCanvasResponse.data, problemIdNumber);
         } else {
             interpretedStructure = interpreter.run(fileContent);
         }
