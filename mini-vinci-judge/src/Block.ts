@@ -1,8 +1,7 @@
 /* eslint-disable */
 
 import { Point } from './Point';
-import { RGBA } from './Color';
-import { StringMappingType } from 'typescript';
+import { Color, RGBA } from './Color';
 
 
 export type Size = Point;
@@ -22,9 +21,9 @@ export class SimpleBlock {
 
     size: Size;
 
-    color: RGBA;
+    color: Color;
 
-    constructor(id: string, bottomLeft: Point, topRight: Point, color: RGBA) {
+    constructor(id: string, bottomLeft: Point, topRight: Point, color: Color) {
         this.typ = BlockType.SimpleBlockType;
         this.id = id;
         this.bottomLeft = bottomLeft;
@@ -36,7 +35,6 @@ export class SimpleBlock {
         }
 
         if (this.size.getScalarSize() == 0) {
-            console.log(this.id, this.bottomLeft, this.topRight);
             throw new Error('Block size cannot be 0!');
         }
     }
